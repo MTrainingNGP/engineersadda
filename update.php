@@ -19,7 +19,7 @@ $update = "update users set
 			year_of_passing	= '$year_of_passing',
 			board_university	= '$board_university',
 			
-			modified 	=now()";
+			modified 	=now() where reg_id = $reg_id";
 if(mysql_query($update))
 {
 echo "true";

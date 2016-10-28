@@ -8,7 +8,7 @@ require_once("includes/config.php");
 
 // print_r($_SESSION['reg_id']);
 
-print_r($_SESSION['reg_id']); //exit;
+// print_r($_SESSION['reg_id']); //exit;
 if (!isset($_SESSION['reg_id'])) {
         # code...
         session_destroy();

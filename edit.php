@@ -69,6 +69,7 @@ $getreligion_id = mysql_query("select * from religions");
 
   <div class="form-group row" id="idfname">
   <label for="example-text-input" class="col-xs-3 col-form-label">First Name</label>
+  <input type="text" name="sess" id="sessvar" hidden value="<?php echo $_SESSION['reg_id'] ;?>" >
   <div class="col-xs-9">
     <input class="form-control" type="text" placeholder="First Name" id="idfiname" name="fname" onblur="validatefName()" value="<?php echo isset($row['first_name'])?$row['first_name']:'';?>">
     <span id="iderrname" class="help-block"></span>

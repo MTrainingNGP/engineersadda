@@ -656,6 +656,7 @@ function updatesub()
 		// }
 
 		$.post('update.php',{
+			reg_id : $("#sessvar").val(),
 			first_name 	: $("#idfiname").val(),
 			last_name 	: $("#idliname").val(),
 			father_name : $("#idfainame").val(),

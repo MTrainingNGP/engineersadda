@@ -21,6 +21,7 @@
             <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         <li><a href="edit.php"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
+        <li><a href="change_password.php"><span class="glyphicon glyphicon-log-in"></span> Change Password</a></li>
         </ul>
         <?php } else { ?>
 
