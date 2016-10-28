@@ -412,61 +412,61 @@ function validateUniv()
 
 //validate password
 
-function validatePassword()
-	{
-		document.getElementById("iderrpassword").innerHTML = "";
-      	var pass = document.getElementById("idfpassword").value;
-      	if (pass == "" || pass == null) 
-		{
+// function validatePassword()
+// 	{
+// 		document.getElementById("iderrpassword").innerHTML = "";
+//       	var pass = document.getElementById("idfpassword").value;
+//       	if (pass == "" || pass == null) 
+// 		{
 
-			var m = document.getElementById("idpassword");
-				m.className += " has-error";
-				errorflag = true;
-			document.getElementById("iderrpassword").innerHTML = "Please enter password.";
+// 			var m = document.getElementById("idpassword");
+// 				m.className += " has-error";
+// 				errorflag = true;
+// 			document.getElementById("iderrpassword").innerHTML = "Please enter password.";
 			
-		}
-		else
-		{
-			var pass1 = document.getElementById("idpassword");
+// 		}
+// 		else
+// 		{
+// 			var pass1 = document.getElementById("idpassword");
 
-				pass1.classList.remove("has-error");
-				errorflag = false;
-				return true;
-		}
-	}
+// 				pass1.classList.remove("has-error");
+// 				errorflag = false;
+// 				return true;
+// 		}
+// 	}
 
 
 // validate confirm password
-function validateConfirmPassword()
-	{
-		document.getElementById("iderrconfirmpassword").innerHTML = "";
-		var pass = document.getElementById("idfpassword").value;
-      	var cpass = document.getElementById("idfconfirmpassword").value;
-      	if (cpass=="" || cpass == null) 
-		{
+// function validateConfirmPassword()
+// 	{
+// 		document.getElementById("iderrconfirmpassword").innerHTML = "";
+// 		var pass = document.getElementById("idfpassword").value;
+//       	var cpass = document.getElementById("idfconfirmpassword").value;
+//       	if (cpass=="" || cpass == null) 
+// 		{
 
-			var m = document.getElementById("idconfirmpassword");
-				m.className += " has-error";
-				errorflag = true;
-			document.getElementById("iderrconfirmpassword").innerHTML = "Please enter Confirm password.";
+// 			var m = document.getElementById("idconfirmpassword");
+// 				m.className += " has-error";
+// 				errorflag = true;
+// 			document.getElementById("iderrconfirmpassword").innerHTML = "Please enter Confirm password.";
 			
-		}
-		else if (cpass !== pass)
-		{
-			var m = document.getElementById("idconfirmpassword");
-				m.className += " has-error";
-				errorflag = true;
-			document.getElementById("iderrconfirmpassword").innerHTML = "password and confirm pasword not matched";
-		}
-		else
-		{
-			var pass2 = document.getElementById("idconfirmpassword");
+// 		}
+// 		else if (cpass !== pass)
+// 		{
+// 			var m = document.getElementById("idconfirmpassword");
+// 				m.className += " has-error";
+// 				errorflag = true;
+// 			document.getElementById("iderrconfirmpassword").innerHTML = "password and confirm pasword not matched";
+// 		}
+// 		else
+// 		{
+// 			var pass2 = document.getElementById("idconfirmpassword");
 
-				pass2.classList.remove("has-error");
-				errorflag = false;
-				return true;
-		}
-	}
+// 				pass2.classList.remove("has-error");
+// 				errorflag = false;
+// 				return true;
+// 		}
+// 	}
 
 
 	//validate phone
@@ -549,60 +549,60 @@ function validateConfirmPassword()
 
 
 
-	function typedis()
-	{
-		var yesbtn = document.getElementById("pdis1").checked;
-		var nobtn = document.getElementById("pdis2").checked;
-		if(nobtn == true)
-		{
-			document.getElementById("pdisinput").value = "";
-		 	document.getElementById("pdisinput").disabled = true;
-		}
-		else if(yesbtn == true)
-		{
-			document.getElementById("pdisinput").disabled = false;
-			var invalue = document.getElementById("pdisinput").value;
-			if(invalue == "" || invalue==null)
-			{
-				var m = document.getElementById("iddisinput");
-						m.className += " has-error";
-						errorflag = true;
-						document.getElementById("iderrpdisinput").innerHTML = "Please Enter Type of disability.";
-			}
-			else
-			{
-				var el2 = document.getElementById("iddisinput");
-				document.getElementById("iderrpdisinput").innerHTML = "";
-					el2.classList.remove("has-error");
-					errorflag = false;
-					return true;
-			}
-		}
-		else if (yesbtn==false && nobtn == false )
-		{
-			alert("Please select Disability");
-		}
+	// function typedis()
+	// {
+	// 	var yesbtn = document.getElementById("pdis1").checked;
+	// 	var nobtn = document.getElementById("pdis2").checked;
+	// 	if(nobtn == true)
+	// 	{
+	// 		document.getElementById("pdisinput").value = "";
+	// 	 	document.getElementById("pdisinput").disabled = true;
+	// 	}
+	// 	else if(yesbtn == true)
+	// 	{
+	// 		document.getElementById("pdisinput").disabled = false;
+	// 		var invalue = document.getElementById("pdisinput").value;
+	// 		if(invalue == "" || invalue==null)
+	// 		{
+	// 			var m = document.getElementById("iddisinput");
+	// 					m.className += " has-error";
+	// 					errorflag = true;
+	// 					document.getElementById("iderrpdisinput").innerHTML = "Please Enter Type of disability.";
+	// 		}
+	// 		else
+	// 		{
+	// 			var el2 = document.getElementById("iddisinput");
+	// 			document.getElementById("iderrpdisinput").innerHTML = "";
+	// 				el2.classList.remove("has-error");
+	// 				errorflag = false;
+	// 				return true;
+	// 		}
+	// 	}
+	// 	else if (yesbtn==false && nobtn == false )
+	// 	{
+	// 		alert("Please select Disability");
+	// 	}
 
-	}
+	// }
 
 
-	function typegender()
-	{
-		var malebtn = document.getElementById("idmale").checked;
-		var femalebtn = document.getElementById("idfemale").checked;
+	// function typegender()
+	// {
+	// 	var malebtn = document.getElementById("idmale").checked;
+	// 	var femalebtn = document.getElementById("idfemale").checked;
 		
-		if (malebtn === false && femalebtn === false )
-		{
-			errorflag = true;
-			alert("Please select Gender");
-		}
-		else
-		{
-			errorflag = false;
-			return true;
-		}
+	// 	if (malebtn === false && femalebtn === false )
+	// 	{
+	// 		errorflag = true;
+	// 		alert("Please select Gender");
+	// 	}
+	// 	else
+	// 	{
+	// 		errorflag = false;
+	// 		return true;
+	// 	}
 
-	}
+	// }
 
 //master function
 function allfuctionv(event)
@@ -622,12 +622,12 @@ function allfuctionv(event)
 		validateEducation();
 			validateYop();
 		validateUniv();
-		validatePassword();
-		validateConfirmPassword();
+		// validatePassword();
+		// validateConfirmPassword();
 		validatePhone();
 		validateMobile();
-		typedis();
-		typegender();
+		// typedis();
+		// typegender();
 
 		
 
@@ -635,7 +635,7 @@ function allfuctionv(event)
 }
 
 
-function finalsubmit()
+function updatesub()
 {
 	// alert(errorflag);
 	// if (errorflag==true) {
@@ -655,16 +655,13 @@ function finalsubmit()
 		// 	}
 		// }
 
-		$.post('join.php',{
+		$.post('update.php',{
 			first_name 	: $("#idfiname").val(),
 			last_name 	: $("#idliname").val(),
 			father_name : $("#idfainame").val(),
 			mother_name : $("#idmoiname").val(),
 			dob 		: $("#date").val(),
-			gender 		: $('[name = "gender" ]:checked').val(),
-			country 	: $('[name = "country"]').val(),
-			state 		: $('[name = "state"]').val(),
-			city 		: $('[name = "city"]').val(),
+			
 			pincode 	: $("#idfpincode").val(),
 			nationality : $("#nationality").val(),
 			religion	: $('[name = "religion_id"]').val(),
@@ -673,26 +670,23 @@ function finalsubmit()
 			email 		: $("#idfemail").val(),
 			education 	: $("#idfeducation").val(),
 			year_of_passing	: $("#idfyop").val(),
-			board_university	: $("#idfuni").val(),
-			phy_attr 	: $('[name = "disability"]:checked').val(),
-			phy_issue 	: $("#pdisinput").val(),
-			password 	: $("#idfpassword").val()
+			board_university	: $("#idfuni").val()
 		},function(result){
 			// alert(result);
 			if(result == "true")
 			{
-				alert("Registraion Successful please login");
-				window.location = 'login.php';
+				alert("Profile update Successful ");
+				window.location = 'profile.php';
 			}
 			else
 			{
-				alert("Registraion failed please try again latter");
+				alert("Update failed please try again latter");
 			}
 		});
 	}
 	else
 	{
-		alert("Fail To register please solve error first");
+		alert("Fail To Update please solve error first");
 	}
 		
 }
@@ -704,12 +698,12 @@ function finalsubmit()
 // 	{
 		
 // 	}
-function disinputno()
-	{
-		 document.getElementById("pdisinput").value = "";
-		 document.getElementById("pdisinput").disabled = true;
+// function disinputno()
+// 	{
+// 		 document.getElementById("pdisinput").value = "";
+// 		 document.getElementById("pdisinput").disabled = true;
 		 
-	}
+// 	}
 
 // phone pattern set
 // function maskphone()
@@ -728,34 +722,34 @@ function disinputno()
 // 	}
 // Input field enable of physical disability
 
-function disinputyes()
-	{
+// function disinputyes()
+// 	{
 		
-		document.getElementById("pdisinput").disabled = false;
-		// var inp document.getElementById("pdisinput").value;
+// 		document.getElementById("pdisinput").disabled = false;
+// 		// var inp document.getElementById("pdisinput").value;
 		
-	}
+// 	}
 
-function regbutton()
-	{
-			var chkbtn = document.getElementById("termsaccpt").checked;
-			if(chkbtn === true)
-			{
-				document.getElementById("subbutton").disabled = false;
-			}
-			else
-			{
-				document.getElementById("subbutton").disabled = true;
-			}
-	}
+// function regbutton()
+// 	{
+// 			var chkbtn = document.getElementById("termsaccpt").checked;
+// 			if(chkbtn === true)
+// 			{
+// 				document.getElementById("subbutton").disabled = false;
+// 			}
+// 			else
+// 			{
+// 				document.getElementById("subbutton").disabled = true;
+// 			}
+// 	}
 
 
 // Register button disable
 
-function disbutton()
-	{
-		document.getElementById("subbutton").disabled = true;
-	}
+// function disbutton()
+// 	{
+// 		document.getElementById("subbutton").disabled = true;
+// 	}
 
 // Register button enable
 

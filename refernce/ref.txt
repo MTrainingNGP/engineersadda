@@ -1,3 +1,5 @@
-https://github.com/claviska/simple-php-captcha    Ref for cpatcha
+google recaptcha    Ref for cpatcha
+
+http://seowebsitedesigning.com/create-country-state-and-city-dropdown-using-jquery/ for location dropdown
 
 

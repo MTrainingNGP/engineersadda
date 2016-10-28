@@ -3,7 +3,16 @@
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 require_once("includes/config.php");
-
+if (!isset($_SESSION['reg_id'])) {
+        # code...
+        session_destroy();
+        header('location:login.php');
+    }
+$id = $_SESSION['reg_id'];
+$query="SELECT * from users where reg_id='$id' ";
+$row = mysql_fetch_assoc(mysql_query($query));
+// print_r($row);
+// exit();
 
 $getreligion_id = mysql_query("select * from religions");
 // print_r($getreligion_id);
@@ -46,7 +55,7 @@ $getreligion_id = mysql_query("select * from religions");
     <![endif]-->
   </head>
 
-  <body onload="disbutton()">
+  <body >
   <!-- include header -->
     <?php require_once("includes/header.php"); ?>
 <!-- start container -->
@@ -61,7 +70,7 @@ $getreligion_id = mysql_query("select * from religions");
   <div class="form-group row" id="idfname">
   <label for="example-text-input" class="col-xs-3 col-form-label">First Name</label>
   <div class="col-xs-9">
-    <input class="form-control" type="text" placeholder="First Name" id="idfiname" name="fname" onblur="validatefName()">
+    <input class="form-control" type="text" placeholder="First Name" id="idfiname" name="fname" onblur="validatefName()" value="<?php echo isset($row['first_name'])?$row['first_name']:'';?>">
     <span id="iderrname" class="help-block"></span>
   </div>
 </div>
@@ -69,7 +78,7 @@ $getreligion_id = mysql_query("select * from religions");
  <div class="form-group row" id="idlname">
   <label for="example-text-input" class="col-xs-3 col-form-label">Last Name</label>
   <div class="col-xs-9">
-    <input class="form-control" type="text" placeholder="Last Name" id="idliname" name="lname" onblur="validatelName()">
+    <input class="form-control" type="text" placeholder="Last Name" id="idliname" name="lname" onblur="validatelName()"  value="<?php echo isset($row['last_name'])?$row['last_name']:'';?>">
     <span id="iderrlname" class="help-block"></span>
   </div>
 </div>
@@ -77,14 +86,14 @@ $getreligion_id = mysql_query("select * from religions");
  <div class="form-group row" id ="idfaname">
   <label for="example-text-input" class="col-xs-3 col-form-label">Father's Name</label>
   <div class="col-xs-9">
-    <input class="form-control" type="text" placeholder="Father's Name" id="idfainame" name="fathername" onblur="validatefaName()">
+    <input class="form-control" type="text"  value="<?php echo isset($row['father_name'])?$row['father_name']:'';?>" placeholder="Father's Name" id="idfainame" name="fathername" onblur="validatefaName()">
     <span id="iderrfaname" class="help-block"></span>
   </div>
 </div>
  <div class="form-group row" id="idmoname">
   <label for="example-text-input" class="col-xs-3 col-form-label">Mother's Name</label>
   <div class="col-xs-9">
-    <input class="form-control" type="text" placeholder="Mother's Name" id="idmoiname"
+    <input class="form-control" type="text"  value="<?php echo isset($row['mother_name'])?$row['mother_name']:'';?>" placeholder="Mother's Name" id="idmoiname"
     name="mothername" onblur="validatemoName()">
     <span id="iderrmoname" class="help-block"></span>
   </div>
@@ -93,12 +102,12 @@ $getreligion_id = mysql_query("select * from religions");
 <div class="form-group row" id="iddate">
   <label for="example-date-input" class="col-xs-3 col-form-label">Date of birth</label>
   <div class="col-xs-9">
-    <input class="form-control" type="text" placeholder="2011-08-19" id="date" name="date" onblur="validateDate()">
+    <input class="form-control" type="text"  value="<?php echo isset($row['dob'])?$row['dob']:'';?>" placeholder="2011-08-19" id="date" name="date" onblur="validateDate()">
     <span id="iderrdate" class="help-block"></span>
   </div>
 </div>
 
-<div class="control-group row">
+<!-- <div class="control-group row">
         <label class="col-xs-3 col-form-label">Gender</label>
         <div class="col-xs-6">
   <div class="col-xs-5">
@@ -114,12 +123,12 @@ $getreligion_id = mysql_query("select * from religions");
             </label>
   </div>
   </div>
-    </div>
+    </div> -->
 
-<div class="form-group row">
+<!-- <div class="form-group row">
   <label for="example-text-input" class="col-xs-3 col-form-label">Country</label>
   <div class="col-xs-9">
-  <select class="form-control countries" name="country" id="countryId sel1">
+  <select class="form-control countries" name="country" id="countryId sel1"  value="<?php echo isset($row['country'])?$row['country']:'';?>">
     <option value="">Select Country</option>
   </select>
   </div>
@@ -128,12 +137,12 @@ $getreligion_id = mysql_query("select * from religions");
 <div class="form-group row" id="idstate">
   <label for="example-text-input" class="col-xs-3 col-form-label">State</label>
   <div class="col-xs-9">
-    <select class="form-control states" name="state" id="sel12 stateId">
+    <select class="form-control states" name="state" id="sel12 stateId"  value="<?php echo isset($row['state'])?$row['state']:'';?>">
    <option value="">Select State</option>
   </select>
-   <!--  <span id="iderrstate" class="help-block"></span> -->
+  
   </div>
-</div>
+</div> -->
 
 
 <!-- <div class="form-group row" id="iddistric">
@@ -145,19 +154,19 @@ $getreligion_id = mysql_query("select * from religions");
   </div>
 </div> -->
 
-<div class="form-group row" id="idcity">
+<!-- <div class="form-group row" id="idcity">
   <label for="example-text-input" class="col-xs-3 col-form-label">City</label>
   <div class="col-xs-9">
-    <select class="form-control cities" id="sel13 cityId" name="city">
+    <select class="form-control cities" id="sel13 cityId" name="city"  value="<?php echo isset($row['city'])?$row['city']:'';?>">
    <option value="">Select City</option>
   </select>
   </div>
-</div>
+</div> -->
 
 <div class="form-group row" id="idpincode">
   <label for="example-text-input" class="col-xs-3 col-form-label">Pincode</label>
   <div class="col-xs-9">
-    <input class="form-control" type="text" placeholder="pincode" id="idfpincode"  name="pincode" onblur="validatePincode(this)">
+    <input class="form-control" type="text"  value="<?php echo isset($row['pincode'])?$row['pincode']:'';?>" placeholder="pincode" id="idfpincode"  name="pincode" onblur="validatePincode(this)">
     <span id="iderrpincode" class="help-block"></span>
   </div>
 </div>
@@ -181,7 +190,7 @@ $getreligion_id = mysql_query("select * from religions");
         <option value="0">Select Religion</option>
     <?php while($religrows = mysql_fetch_array($getreligion_id)){  ?>
       
-      <option value="<?php echo $religrows['id'];?>" <?php echo isset($_POST['religion_id']) && $_POST['religion_id']==$religrows['id']?'selected':'';?> > <?php echo $religrows['reli_name'];?></option>
+      <option value="<?php echo $religrows['id'];?>" <?php echo isset($row['religion']) && $row['religion']==$religrows['id']?'selected':'';?> > <?php echo $religrows['reli_name'];?></option>
       <?php } ?>
     </select>
   </div>
@@ -201,7 +210,7 @@ $getreligion_id = mysql_query("select * from religions");
 <div class="form-group row" id="idphone">
   <label for="phone" class="col-xs-3 col-form-label">Phone Number</label>
   <div class="col-xs-9">
-    <input class="form-control " type="text" name="phone" placeholder="0712-000000"  id="idfphone" value="" onblur="validatePhone()">
+    <input class="form-control " type="text" name="phone" placeholder="0712-000000"  id="idfphone"  value="<?php echo isset($row['phone_no'])?$row['phone_no']:'';?>" onblur="validatePhone()">
     <span id="iderrphone" class="help-block"></span>
   </div>
 
@@ -211,7 +220,7 @@ $getreligion_id = mysql_query("select * from religions");
 <div class="form-group row" id="idmobile">
   <label for="example-tel-input" class="col-xs-3 col-form-label">Mobile Number</label>
   <div class="col-xs-9">
-    <input class="form-control" type="tel" placeholder="9999999999" id="idfmobile" name ="mobile" onblur="validateMobile()">
+    <input class="form-control" type="tel"  value="<?php echo isset($row['mobile_no'])?$row['mobile_no']:'';?>" placeholder="9999999999" id="idfmobile" name ="mobile" onblur="validateMobile()">
     <span id="iderrmobile" class="help-block"></span>
   </div>
 </div>
@@ -219,7 +228,7 @@ $getreligion_id = mysql_query("select * from religions");
 <div class="form-group row" id="idemail">
   <label for="example-email-input" class="col-xs-3 col-form-label">Email</label>
   <div class="col-xs-9">
-    <input class="form-control" type="email" placeholder="abc@abc.com" id="idfemail" onblur="validateEmail()">
+    <input class="form-control" type="email" placeholder="abc@abc.com"  value="<?php echo isset($row['email'])?$row['email']:'';?>" id="idfemail" onblur="validateEmail()">
     <span id="iderremail" class="help-block"></span>
   </div>
 </div>
@@ -228,26 +237,26 @@ $getreligion_id = mysql_query("select * from religions");
 <div class="form-group row" id="ideducation">
   <label for="example-url-input" class="col-xs-3 col-form-label">Education</label>
   <div class="col-xs-9">
-    <input class="form-control" type="text" placeholder="Education Qualification" id="idfeducation" onblur="validateEducation()">
+    <input class="form-control" type="text" placeholder="Education Qualification"  value="<?php echo isset($row['education'])?$row['education']:'';?>" id="idfeducation" onblur="validateEducation()">
     <span id="iderreducation" class="help-block"></span>
   </div>
 </div>
 <div class="form-group row" id="idyop">
   <label for="example-url-input" class="col-xs-3 col-form-label">Year Of passing</label>
   <div class="col-xs-9">
-    <input class="form-control" type="text" placeholder="Education Qualification" id="idfyop" onblur="validateYop()">
+    <input class="form-control" type="text"  value="<?php echo isset($row['year_of_passing'])?$row['year_of_passing']:'';?>" placeholder="Education Qualification" id="idfyop" onblur="validateYop()">
     <span id="iderryop" class="help-block"></span>
   </div>
 </div>
 <div class="form-group row" id="iduni">
   <label for="example-tel-input" class="col-xs-3 col-form-label">Board / University</label>
   <div class="col-xs-9">
-    <input class="form-control" type="text" placeholder="Board or University" id="idfuni" onblur="validateUniv()">
+    <input class="form-control" type="text"  value="<?php echo isset($row['board_university'])?$row['board_university']:'';?>" placeholder="Board or University" id="idfuni" onblur="validateUniv()">
     <span id="iderruni" class="help-block"></span>
   </div>
 </div>
 
-<div class="form-group row">
+<!-- <div class="form-group row">
   <label for="example-tel-input" class="col-xs-3 col-form-label">Physical Disability</label>
   <div class="col-xs-4">
   <div class="col-xs-5">
@@ -261,17 +270,17 @@ $getreligion_id = mysql_query("select * from religions");
                 <input class="form-control" type="radio" name="disability" id="pdis2" onclick="disinputno()" value="no"/>
                 NO
             </label>
-  </div>
-  </div>
+  </div> -->
+  <!-- </div> -->
 
-  <div class="col-xs-5" id="iddisinput">
+  <!-- <div class="col-xs-5" id="iddisinput">
     <input class="form-control" type="tel" placeholder="Type of disability" id="pdisinput" onblur="typedis()" >
     <span id="iderrpdisinput" class="help-block"></span>
   </div>
 
-</div>
+</div> -->
 
-<div class="form-group row" id="idpassword">
+<!-- <div class="form-group row" id="idpassword">
   <label for="example-password-input" class="col-xs-3 col-form-label">Password</label>
   <div class="col-xs-9">
     <input class="form-control" type="password" placeholder="Password" id="idfpassword" name="password" onblur="validatePassword()">
@@ -284,15 +293,13 @@ $getreligion_id = mysql_query("select * from religions");
     <input class="form-control" type="password" placeholder="Confirm Password" id="idfconfirmpassword" onblur="validateConfirmPassword()">
     <span id="iderrconfirmpassword" class="help-block"></span>
   </div>
-</div>
-<div class="form-group row">
+</div> -->
+<!-- <div class="form-group row">
   <label for="example-number-input" class="col-xs-3 col-form-label">Captcha</label>
   <div class="g-recaptcha col-xs-9" data-sitekey="6LeeSQoUAAAAAHvwQyM3cnvRnry3UdPnMP3_T__5"></div>
 
-  <!-- <div class="col-xs-9">
-    <?php echo '<img src = "'.$_SESSION['captcha']['image_src'].'" height="50" width="50">';?>
-  </div> -->
-</div>
+  
+</div> -->
 
 <!-- <div class="form-group row">
   <label for="example-number-input" class="col-xs-2 col-form-label"></label>
@@ -307,7 +314,7 @@ $getreligion_id = mysql_query("select * from religions");
   </div>
   </div>
 </div> -->
-<div class="form-group row">
+<!-- <div class="form-group row">
   
   <div class="col-xs-10 col-xs-offset-3">
       <label class="checkbox-inline col-xs-1">
@@ -315,17 +322,17 @@ $getreligion_id = mysql_query("select * from religions");
       <p class="col-xs-8"> I Accept terms And Condition.</p>
   </div>
   
-</div>
+</div> -->
 
 
 <div class="form-group row col-xs-offset-1" >
 
   <div class="col-xs-6">
-     <input class="form-control btn-success" value="submit" type="button" placeholder="Register" name="submit"  id="subbutton" onclick="allfuctionv(event); finalsubmit()  ">
+     <input class="form-control btn-success" value="Update" type="button" placeholder="Register" name="submit"  id="subbutton" onclick="allfuctionv(event); updatesub()  ">
     <!-- allfuctionv(event), -->
   </div>
   <div class="col-xs-5">
-    <input class="form-control btn-info" type="button" value="Back" placeholder="Back" >
+    <a href="profile.php"><input class="form-control btn-info" type="button" value="Back" placeholder="Back" ></a>
   </div>
 </div>
         </form>
@@ -348,7 +355,7 @@ $getreligion_id = mysql_query("select * from religions");
     <!-- location script -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <script src="js/shani_location.js"></script>
-<script src="js/registration.js"></script>
+<script src="js/edit.js"></script>
 
 <!-- captcha script -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
