@@ -18,11 +18,20 @@
             <li><a href="contact.php">Contact</a></li>
           </ul>
           <?php if(!empty($_SESSION['reg_id'])){ ?>
+
+          <div>
             <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Profile<span class="caret"></span></a>
+            <ul class="dropdown-menu">
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         <li><a href="edit.php"><span class="glyphicon glyphicon-log-in"></span> Edit Profile</a></li>
         <li><a href="change_password.php"><span class="glyphicon glyphicon-log-in"></span> Change Password</a></li>
         </ul>
+        </li>
+        </ul>
+        </div>
+
         <?php } else { ?>
 
           <ul class="nav navbar-nav navbar-right">

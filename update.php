@@ -2,6 +2,7 @@
 require_once("includes/config.php");
 extract($_POST);
 // print_r($_POST);
+
 $update = "update users set
 			first_name 	= '$first_name',
 			last_name 	= '$last_name',

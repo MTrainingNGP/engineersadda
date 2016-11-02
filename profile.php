@@ -20,6 +20,8 @@ $id = $_SESSION['reg_id'];
 $query="SELECT * from users where reg_id='$id' ";
 $row = mysql_fetch_assoc(mysql_query($query));
 // print_r($row);
+// exit();
+$image = $row['image']
 ?>
 
 
@@ -65,11 +67,11 @@ $row = mysql_fetch_assoc(mysql_query($query));
        <div class="col-lg-12 col-sm-12">
     <div class="card hovercard">
         <div class="card-background">
-            <img class="card-bkimg" alt="" src="images/dummy.jpg">
+            <img class="card-bkimg" alt="" src="images/<?php echo $row['image'];?>"  >
             <!-- http://lorempixel.com/850/280/people/9/ -->
         </div>
         <div class="useravatar">
-            <img alt="" src="images/dummy.jpg">
+            <img alt="" src="images/<?php echo $row['image'];?>">
         </div>
         <div class="card-info"> <span class="card-title"><?php echo $row["first_name"]." ".$row["last_name"];  ?></span>
 
@@ -95,14 +97,92 @@ $row = mysql_fetch_assoc(mysql_query($query));
     <div class="well">
       <div class="tab-content">
         <div class="tab-pane fade in active" id="tab1">
-          <h3>Personal Information</h3>
+         <table class="table table-hover">
+                  
+                  <tbody>
+                    <tr>
+                      <td>Name:</td>
+                      <td><?php echo $row["first_name"]." ".$row["last_name"];  ?></td>
+                    </tr>
+                    <tr>
+                      <td>Father's Name:</td>
+                      <td><?php echo $row["father_name"];  ?></td>
+                    </tr>
+                   <tr>
+                      <td>Mother's Name:</td>
+                      <td><?php echo $row["mother_name"];  ?></td>
+                    </tr>
+                    <tr>
+                      <td>Date Of Birth:</td>
+                      <td><?php echo $row["dob"];  ?></td>
+                    </tr>
+                    <tr>
+                      <td>Gender:</td>
+                      <td><?php echo $row["gender"];  ?></td>
+                    </tr>
+                  </tbody>
+</table>
 
         </div>
         <div class="tab-pane fade in" id="tab2">
-          <h3>EDUCATIONAL INFORMATION</h3>
+         <table class="table table-hover">
+                  
+                  <tbody>
+                    <tr>
+                      <td>Education:</td>
+                      <td><?php echo $row["education"];  ?></td>
+                    </tr>
+                    <tr>
+                      <td>Year of passing:</td>
+                      <td><?php echo $row["year_of_passing"];  ?></td>
+                    </tr>
+                   <tr>
+                      <td>Board/University:</td>
+                      <td><?php echo $row["mother_name"];  ?></td>
+                    </tr>
+                    <tr>
+                      <td>Physical Disability:</td>
+                      <td><?php echo $row["phy_attr"];  ?></td>
+                    </tr>
+                    <tr>
+                      <td>Image:</td>
+                      <td><img class="card-bkimg" height="150" width="150" alt="" src="images/<?php echo $row['image'];?>"  ></td>
+                    </tr>
+                  </tbody>
+</table>
+
+
+
         </div>
         <div class="tab-pane fade in" id="tab3">
-          <h3>CONTACT DETAILS</h3>
+          
+
+          <table class="table table-hover">
+                  
+                  <tbody>
+                    <tr>
+                      <td>Email:</td>
+                      <td><?php echo $row["email"];  ?></td>
+                    </tr>
+                    <tr>
+                      <td>Mobile No:</td>
+                      <td><?php echo $row["mobile_no"];  ?></td>
+                    </tr>
+                   <tr>
+                      <td>Phone No:</td>
+                      <td><?php echo $row["phone_no"];  ?></td>
+                    </tr>
+                    <tr>
+                      <td>Address:</td>
+                      <td><?php echo $row["city"].",".$row["state"].",".$row["country"]."-".$row["pincode"];  ?></td>
+                    </tr><!-- 
+                    <tr>
+                      <td>Gender:</td>
+                      <td><?php echo $row["gender"];  ?></td>
+                    </tr> -->
+                  </tbody>
+</table>
+
         </div>
       </div>
     </div>

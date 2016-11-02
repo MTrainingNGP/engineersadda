@@ -64,7 +64,7 @@ $getreligion_id = mysql_query("select * from religions");
       <div class="starter-template" id="form-content" style="border: solid 5px black; margin: 10px; padding: 2px">
         <h3 style="text-align: center">Registraton with EngineersAdda</h3>
 
-        <form method="post" id="reg-form">
+        <form method="post" id="reg-form" enctype="multipart/form-data">
 
 
   <div class="form-group row" id="idfname">
@@ -257,6 +257,15 @@ $getreligion_id = mysql_query("select * from religions");
   </div>
 </div>
 
+<div class="form-group row" id="idimage">
+  <label for="example-tel-input" class="col-xs-3 col-form-label">Image</label>
+  <div class="col-xs-9">
+    <img class="card-bkimg" height="150" width="150" alt="" src="images/<?php echo $row['image'];?>"  >
+    <input class="form-control" type="file" name="image" id="image" />
+    <span id="iderruni" class="help-block"></span>
+  </div>
+</div>
+
 <!-- <div class="form-group row">
   <label for="example-tel-input" class="col-xs-3 col-form-label">Physical Disability</label>
   <div class="col-xs-4">
@@ -329,7 +338,7 @@ $getreligion_id = mysql_query("select * from religions");
 <div class="form-group row col-xs-offset-1" >
 
   <div class="col-xs-6">
-     <input class="form-control btn-success" value="Update" type="button" placeholder="Register" name="submit"  id="subbutton" onclick="allfuctionv(event); updatesub()  ">
+     <input class="form-control btn-success" value="Update" type="button" placeholder="Register" name="submit"  id="subbutton" onclick="allfuctionv(event); updatesub(event)  ">
     <!-- allfuctionv(event), -->
   </div>
   <div class="col-xs-5">

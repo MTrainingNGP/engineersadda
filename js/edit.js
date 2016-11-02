@@ -654,7 +654,10 @@ function updatesub()
 		// 		alert(obj.responseText);
 		// 	}
 		// }
-
+		// var fd = new FormData();
+  //       var file_data = $('input[type="file"]')[0].files;
+  //       fd.append("file_", file_data[0]);
+  //       console.log(file_data);
 		$.post('update.php',{
 			reg_id : $("#sessvar").val(),
 			first_name 	: $("#idfiname").val(),
@@ -671,7 +674,8 @@ function updatesub()
 			email 		: $("#idfemail").val(),
 			education 	: $("#idfeducation").val(),
 			year_of_passing	: $("#idfyop").val(),
-			board_university	: $("#idfuni").val()
+			board_university	: $("#idfuni").val(),
+			// image	: $("#ifimage").attr
 		},function(result){
 			// alert(result);
 			if(result == "true")
